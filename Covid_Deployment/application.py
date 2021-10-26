@@ -17,7 +17,7 @@ def success():
         #file_path="E:\aine\project9\Project9\DataSet\Covid19 Positive\0a7faa2a.jpg"
         f.save(file_path)
         outcome=predict_covid(file_path)
-        return str(outcome)
+        return render_template('success.html', prediction=outcome,url=file_path)
     return render_template("index.html")
 
 if __name__=='__main__':
