@@ -19,4 +19,11 @@ With the Chest X - Ray dataset, develop a Deep Learning Model to classify the X 
 
 __Tools & libraries to Use:__ JupyterNotebook or Google Colab, Python3, Numpy, OpenCV, Tensorflow, Keras etc
 
+ ## DataSet
+
+1. Create Folder 'DataSet'
+
+2. Fetch images from [Covid Nagative Images](https://www.kaggle.com/paultimothymooney/chest-xray-pneumonia) and save them under  subfolder 'Covid19 Negative'
+
+3. Fetch images from [Covid Positive Images](https://github.com/ieee8023/covid-chestxray-dataset/tree/master/images) and save them under  subfolder 'Covid19 Positive'
  
