@@ -2,7 +2,11 @@ from flask import *
 import os
 from werkzeug.utils import secure_filename
 from predict import predict_covid
+IMG_FOLDER = os.path.join('static', 'images')
+
+
 application=Flask(__name__)
+application.config['UPLOAD_FOLDER'] = IMG_FOLDER
 
 @application.route('/')
 def upload():
@@ -12,12 +16,10 @@ def upload():
 def success():
     if request.method=='POST':
         f=request.files['file']
-        basepath=os.path.dirname(__file__)
-        file_path=os.path.join(basepath,"input_data",secure_filename(f.filename))
-        #file_path="E:\aine\project9\Project9\DataSet\Covid19 Positive\0a7faa2a.jpg"
-        f.save(file_path)
-        outcome=predict_covid(file_path)
-        return render_template('success.html', prediction=outcome,url=file_path)
+        full_filename = os.path.join(application.config['UPLOAD_FOLDER'], secure_filename(f.filename))
+        f.save(full_filename)
+        outcome=predict_covid(full_filename)
+        return render_template('success.html', prediction=outcome,url=full_filename)
     return render_template("index.html")
 
 if __name__=='__main__':
